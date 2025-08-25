@@ -1,0 +1,122 @@
+/* Grid layout for main container */.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 250px;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header header"
+    "nav main aside"
+    "footer footer footer";
+  gap: 10px;
+  min-height: 100vh;
+  background-color: white;
+  font-family: Arial, sans-serif;
+  color: black;
+  margin: 0 10px;
+}
+
+/* Areas */
+header {
+  grid-area: header;
+  background-color: royalblue;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  grid-area: nav;
+  background-color: lightsteelblue;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+}
+
+nav a {
+  color: navy;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+/* Main content */
+main {
+  grid-area: main;
+  background-color: aliceblue;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+}
+
+/* Cards use Flexbox */.cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}.cards article {
+  background-color: lightyellow;
+  padding: 15px;
+  border: 2px solid gold;
+  border-radius: 8px;
+  flex: 1 1 calc(30% - 10px);
+  box-sizing: border-box;
+  min-width: 180px;
+}
+
+/* Sidebar styling */
+aside {
+  grid-area: aside;
+  background-color: lightgray;
+  padding: 20px;
+  color: black;
+  border-left: 2px solid silver;
+}
+
+/* Footer */
+footer {
+  grid-area: footer;
+  background-color: royalblue;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {.container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "aside"
+      "footer";
+  }
+  
+  nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  
+  nav a {
+    flex: 0 0 auto;
+  }.cards {
+    flex-direction: column;
+  }.cards article {
+    flex: none;
+    width: 100%;
+  }
+  
+  aside {
+    border-left: none;
+    border-top: 2px solid silver;
+  }
+}
